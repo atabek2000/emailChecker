@@ -86,6 +86,14 @@ def text():
 def mail():
     if request.method == 'GET':
         return render_template('mail.html')
+    elif request.method == 'POST':
+        from static.library.mail_predict import predict
+        mail_type = predict(request.form['text'])
+        if mail_type == 1:
+            text = 'Бұл хабарлама <span class=\\"text-danger\\">спам</span>'
+        else:
+            text = 'Бұл хабарлама <span class=\\"text-success\\">спам емес</span>'
+        return '<script>window_alert("<h5>'+text+'</h5>")</script>'
 
 
 @app.route('/about')

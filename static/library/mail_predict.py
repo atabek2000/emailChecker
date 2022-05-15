@@ -34,7 +34,7 @@ def text_pp(docs):
     return documents
 
 def predict(user_text):
-    file = '../dataset/spam_ham_dataset.csv'
+    file = 'static/dataset/spam_ham_dataset.csv'
     df = pd.read_csv(file)
     df.drop('Unnamed: 0', inplace=True, axis=1)
     df.drop('label', inplace=True, axis=1)

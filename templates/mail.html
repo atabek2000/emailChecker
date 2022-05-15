@@ -9,7 +9,10 @@
           <textarea class="form-control" id="user_text" placeholder="Мәтінді енгізіңіз" rows="3"></textarea>
         </div>
         <button class="btn btn-primary mb-3" id="oform" type="button" onclick="checkMail()">Өңдеу</button>
-        <button class="btn btn-primary mb-3 disabled" id="dis_oform" style="display: none" type="button">Өңдеу</button>
+        <button class="btn btn-primary" type="button" disabled id="dis_oform" style="display: none">
+          <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+          Өңделуде...
+        </button>
         <div id="protocol"></div>
     </div>
     <script type="text/javascript">
