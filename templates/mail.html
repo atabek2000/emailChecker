@@ -1,1 +1,36 @@
+{% set title = 'Хабарлама тексеру' %}
 {% extends 'base.html'%}
+{% block title %}{{ title }}{% endblock %}
+{% block body %}
+    <div class="container">
+        <h2>{{ title }}</h2>
+        <div class="mb-3">
+          <label for="user_text" class="form-label">Мәтін</label>
+          <textarea class="form-control" id="user_text" placeholder="Мәтінді енгізіңіз" rows="3"></textarea>
+        </div>
+        <button class="btn btn-primary mb-3" id="oform" type="button" onclick="checkMail()">Өңдеу</button>
+        <button class="btn btn-primary mb-3 disabled" id="dis_oform" style="display: none" type="button">Өңдеу</button>
+        <div id="protocol"></div>
+    </div>
+    <script type="text/javascript">
+        function checkMail(){
+            if($("#user_text").val() == ''){
+                window_alert("<h5 class=\"text-danger\">Мәтін енгізіңіз!</h5>")
+            }else{
+                $.ajax({
+                    url: '/mail',
+                    data: 'do=checkMail&text='+$("#user_text").val(),
+                    type: 'post',
+                    dataType: 'html',
+                    beforeSend: function () { $("#oform").hide(); $("#dis_oform").show();
+                    },
+                    success: function (data) { $("#oform").show(); $("#dis_oform").hide(); $("#protocol").html(data);
+                    },
+                    error: function () { $("#oform").show(); $("#dis_oform").hide();
+                    }
+                })
+            }
+
+        }
+    </script>
+{% endblock %}

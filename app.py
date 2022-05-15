@@ -82,9 +82,10 @@ def text():
         return answer
 
 
-@app.route('/mail')
+@app.route('/mail', methods=["GET", "POST"])
 def mail():
-    return render_template('mail.html')
+    if request.method == 'GET':
+        return render_template('mail.html')
 
 
 @app.route('/about')
