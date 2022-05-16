@@ -27,7 +27,8 @@
                     dataType: 'html',
                     beforeSend: function () { $("#oform").hide(); $("#dis_oform").show();
                     },
-                    success: function (data) { $("#oform").show(); $("#dis_oform").hide(); $("#protocol").html(data);
+                    success: function (data) { $("#oform").show();
+                        $("#dis_oform").hide(); $("#protocol").html(data);
                     },
                     error: function () { $("#oform").show(); $("#dis_oform").hide();
                     }
